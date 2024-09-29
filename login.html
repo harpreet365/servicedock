@@ -63,14 +63,14 @@
 
         .login_form_box {
             background-color: #fff;
-            padding: 30px;
+            padding: 35px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             max-height: 400px;
             max-width: 300px;
             width: 100%;
             z-index: 1;
-            position: relative ;
+            position: center ;
         }
 
         .login_form_box h2 {
@@ -94,6 +94,7 @@
         }
 
         .form-group input[type="email"],
+        .form-group input[type="phone"],
         .form-group input[type="password"] {
             width: 100%;
             padding: 12px;
@@ -194,7 +195,7 @@
         <!-- login section -->
         <section class="login_section">
             <!-- PNG Images -->
-            <img src="/alteration/public/images/professional-img.png" alt="Left Image" class="img-left">
+            <img src="/images/professional-img.png" alt="Left Image" class="img-left">
           
             <div class="login_form_box">
                 <h2>Login to Your Account</h2>
@@ -203,10 +204,10 @@
                         <label for="email">Email address</label>
                         <input type="email" id="email" placeholder="Enter email" >
                     </div>
-                    <div class="form-group">
-                        <label for="phone no. ">phone no.</label>
-                        <input type="number" id="phone" placeholder="enter phone no." >
-                    </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="phone" id="phone" name="phone" placeholder="Phone Number" required>
+            </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" id="password" placeholder="Enter password" >
