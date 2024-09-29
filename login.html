@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SERVICEDOCK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .header_section {
+            background-color: #00264d;
+            padding: 15px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .header_section .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f78d04;
+            text-decoration:solid ;
+        }
+
+        .header_section nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header_section nav ul li {
+            display: inline;
+            padding: 0 15px;
+        }
+
+        .header_section nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .header_section nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .login_section {
+            background-color: #e6f2ff;
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            position: relative;
+        }
+
+        .login_form_box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            max-width: 300px;
+            width: 100%;
+            z-index: 1;
+            position: relative ;
+        }
+
+        .login_form_box h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #00264d;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #00264d;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #00264d;
+        }
+        .forgot-password {
+            float: right;
+            font-size: 14px;
+            color: #007BFF;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #e65c00;
+        }
+
+        .login_link {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .login_link a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot-password {
+                font-size: 12px;
+            }
+            
+            .forgot-password {
+                font-size: 11px;
+            }
+        .login_link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer_section {
+            background-color: #00264d;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer_section p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* PNG Image Styling */
+        .login_section img {
+            position: absolute;
+            width: 35%; /* Increase to cover a larger portion */
+            height: auto;
+        }
+
+        .login_section .img-left {
+            left: 0;
+            bottom: 0;
+        }
+
+        .login_section .img-right {
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero_area">
+        <!-- header section -->
+        <header class="header_section">
+            <a class="navbar-brand" href="index.html">SERVICEDOCK</a>
+        </header>
+        <!-- end header section -->
+
+        <!-- login section -->
+        <section class="login_section">
+            <!-- PNG Images -->
+            <img src="/alteration/public/images/professional-img.png" alt="Left Image" class="img-left">
+          
+            <div class="login_form_box">
+                <h2>Login to Your Account</h2>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" placeholder="Enter email" >
+                    </div>
+                    <div class="form-group">
+                        <label for="phone no. ">phone no.</label>
+                        <input type="number" id="phone" placeholder="enter phone no." >
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter password" >
+                        <span class="forgot-password">Forgot Password</span>
+                    </div>
+                    <form action="/alteration/public/index.html" method="go to">
+                        <button type="submit" href="/alteration/public/index.html" class="btn btn-primary">Login</button>
+                    </form>
+                    
+
+                    <div class="login_link">
+                        <p>Don't have an account? <a href="register.html">Register here</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+    </div>
+     <!-- end login section -->
+</body>
+
+</html>
