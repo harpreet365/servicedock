@@ -1,29 +1,42 @@
 <?php
 // Database connection
-$conn = new mysqli('localhost', 'your_db_username', 'your_db_password', 'ServiceDock');
+$servername = "localhost"; // Change this to your server
+$username = "root"; // Change this to your database username
+$password = ""; // Change this to your database password
+$dbname = "servicedock"; // Change this to your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get data from the registration form
-$username = $_POST['username'];
-$email = $_POST['email'];
-$phone_number = $_POST['phone_number'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password for security
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the form data
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password']; // It's a good idea to hash the password before saving it
 
-// Insert data into the users table
-$sql = "INSERT INTO users (username, email, phone_number, password) VALUES (?, ?, ?, ?)";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", $username, $email, $phone_number, $password);
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-if ($stmt->execute()) {
-    echo "Registration successful";
-} else {
-    echo "Error: " . $stmt->error;
+    // Prepare the SQL query to insert data
+    $sql = "INSERT INTO users (username, email, phone, password) VALUES ('$username', '$email', '$phone', '$hashed_password')";
+
+    if ($conn->query($sql) === TRUE) {
+        // Registration successful
+        echo "New record created successfully";
+        header("Location: index.html"); // Redirect after successful registration
+    } else {
+        // Error in insertion
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 }
 
-$stmt->close();
+// Close the database connection
 $conn->close();
 ?>

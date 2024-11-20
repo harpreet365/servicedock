@@ -1,36 +1,37 @@
 <?php
-// Database connection
-$conn = new mysqli('localhost', 'your_db_username', 'your_db_password', 'ServiceDock');
+session_start(); // Start the session
 
-// Check connection
+// Database connection
+$conn = new mysqli("localhost", "root", "", "your_database_name"); // Replace with actual database details
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get data from the login form
-$email = $_POST['email'];
-$phone_number = $_POST['phone_number'];
-$password = $_POST['password'];
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-// Fetch user data from the database
-$sql = "SELECT id, password FROM users WHERE email = ? AND phone_number = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $email, $phone_number);
-$stmt->execute();
-$result = $stmt->get_result();
+    // Sanitize inputs
+    $email = $conn->real_escape_string($email); // Prevent SQL injection
 
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-    if (password_verify($password, $user['password'])) {
-        echo "Login successful";
-        // Start session or redirect to dashboard as needed
+    // Check credentials
+    $sql = "SELECT * FROM users WHERE email='$email'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            // Successful login
+            $_SESSION['username'] = $row['username'];
+            header("Location: index.html"); // Redirect to dashboard page
+            exit(); // Make sure no further code is executed
+        } else {
+            echo "Invalid password.";
+        }
     } else {
-        echo "Incorrect password";
+        echo "No account found with that email.";
     }
-} else {
-    echo "No account found with the provided email and phone number";
 }
 
-$stmt->close();
 $conn->close();
 ?>
